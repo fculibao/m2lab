@@ -1,0 +1,38 @@
+version: '3'
+services:
+  db01:
+    image: fculibao/inandb:V1
+    ports:
+      - "3306:3306"
+    volumes:
+      - vprodbdata:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=vprodbpass # matches on the application.properties file in /src/main/resources.
+  mc01:
+    image: memcached
+    ports:
+      - "11211:11211"
+  
+  rmq01:
+    image: rabbitmq
+    ports:
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+
+  app01:
+    image: fculibao/inanapp:V1
+    ports:
+      - "8080:8080"
+    volumes:
+      - vproappdata:/usr/loca/tomcat/webapps
+
+  web01:
+     image: fculibao/inanweb:V1
+     ports:
+       - "80:80"
+
+volumes:
+  vprodbdata: {}
+  vproappdata: {}
