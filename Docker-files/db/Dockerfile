@@ -1,4 +1,4 @@
-FROM mysql:5.7.40
+FROM arm64v8/mysql:latest
 LABEL Project="Vprofile"
 LABEL Author="Ferdie"
 

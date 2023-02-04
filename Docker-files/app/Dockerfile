@@ -1,4 +1,4 @@
-FROM  tomcat:8-jre11
+FROM  arm64v8/tomcat:8-jre11-temurin-focal
 LABEL Project="Vprofile"
 LABEL Author="Ferdie"
 RUN rm -rf /usr/local/tomcat/webapps/*

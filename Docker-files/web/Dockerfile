@@ -1,4 +1,4 @@
-FROM nginx
+FROM arm64v8/nginx
 LABEL Project="Vprofile"
 LABEL Author="Ferdie"
 
