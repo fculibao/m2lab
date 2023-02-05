@@ -1,7 +1,7 @@
 version: '3'
 services:
   db01:
-    image: fculibao/inandb:V1
+    image: fculibao/m2lab-db:V1
     ports:
       - "3306:3306"
     volumes:
@@ -9,12 +9,12 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=vprodbpass # matches on the application.properties file in /src/main/resources.
   mc01:
-    image: memcached
+    image: arm64v8/memcached
     ports:
       - "11211:11211"
   
   rmq01:
-    image: rabbitmq
+    image: arm64v8/rabbitmq
     ports:
       - "15672:15672"
     environment:
@@ -22,14 +22,14 @@ services:
       - RABBITMQ_DEFAULT_PASS=guest
 
   app01:
-    image: fculibao/inanapp:V1
+    image: fculibao/m2lab-app:V1
     ports:
       - "8080:8080"
     volumes:
       - vproappdata:/usr/loca/tomcat/webapps
 
   web01:
-     image: fculibao/inanweb:V1
+     image: fculibao/m2lab-web:V1
      ports:
        - "80:80"
 

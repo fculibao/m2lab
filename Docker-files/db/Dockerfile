@@ -9,5 +9,6 @@ ENV MYSQL_DATABASE="accounts"
 # copy db back up script to the docker image ( db_backup.sql should be in this directory )
 ADD db_backup.sql docker-entrypoint-initdb.d/db_backup.sql
 
+ENTRYPOINT [`db_backup.sq`]
 CMD service mysql start
 
