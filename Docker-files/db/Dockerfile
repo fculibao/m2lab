@@ -7,8 +7,9 @@ ENV MYSQL_ROOT_PASSWORD="vprodbpass"
 ENV MYSQL_DATABASE="accounts"
 
 # copy db back up script to the docker image ( db_backup.sql should be in this directory )
-ADD db_backup.sql docker-entrypoint-initdb.d/db_backup.sql
+#ADD db_backup.sql docker-entrypoint-initdb.d/db_backup.sql
+COPY ./db_backup.sql /docker-entrypoint-initdb.d/
 
-ENTRYPOINT [`db_backup.sq`]
-CMD service mysql start
+#ENTRYPOINT [`db_backup.sql`]
+#CMD [`mysqld`]
 
