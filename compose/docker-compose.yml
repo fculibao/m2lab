@@ -1,13 +1,13 @@
 version: '3'
 services:
   db01:
-    image: fculibao/m2lab-db:V1
+    image: fculibao/mysqldb-arm64v8:latest
     ports:
       - "3306:3306"
     volumes:
       - vprodbdata:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=vprodbpass # matches on the application.properties file in /src/main/resources.
+      - MYSQL_ROOT_PASSWORD=vprodbpass
   mc01:
     image: arm64v8/memcached
     ports:
@@ -22,7 +22,7 @@ services:
       - RABBITMQ_DEFAULT_PASS=guest
 
   app01:
-    image: fculibao/m2lab-app:V1
+    image: fculibao/tomcat-arm64v8-jre11:latest
     ports:
       - "8080:8080"
     volumes:
